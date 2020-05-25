@@ -1,2 +1,0 @@
-# cienciadedadosuff.github.io
-Homepage
