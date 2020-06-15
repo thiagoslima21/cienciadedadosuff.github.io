@@ -1,0 +1,1662 @@
+---
+layout: post
+title:  "Caderno 1"
+date:   2020-06-15 10:30:41 -0300
+categories: Machine-Learning
+---
+
+# Python básico - Caderno 01
+# Tipos e objetos
+
+Este caderno busca conter a primeira parte sobre Python básico e inclui:
+* Por que Python?
+* Instalação e configurações
+* Variáveis
+* Input de usuário
+* Listas e tuplas
+* Dicionários
+
+## Por que Python?
+
+Python é uma linguagem interpretada de alto nível amplamente utilizada nas mais diversas áreas devido a sua capacidade de satisfazer as necessidades dos iniciantes até os mais experientes, por ser uma linguagem multiparadigma, ela suporta tanto códigos voltados a orientação a objetos quanto escritos de forma estrutural ou em forma de script. Sua sintaxe é simples e limpa, ótima para um desenvolvimento rápido, testes e manutenção. Sua ampla comunidade nos fornece uma incrível gama de bibliotecas e frameworks que cobrem desde desenvolvimento web até tópicos como aprendizado de máquina e estatística. Sua popularidade vem crescendo gradualmente, para demonstrar isto, mostraremos uma pesquisa anual realizada pela equipe do mais famoso fórum de linguagens de programação, o [stackoverflow](https://stackoverflow.com).
+Veja os resultados da pesquisa referente a 2019 abaixo:
+
+#### Entre as mais amadas
+
+Python aparece em segundo lugar entre as linguagens mais amadas deste ano, perdendo apenas para Rust.
+
+![image.png](attachment:image.png)
+
+#### A mais desejada
+
+Python aparece como a linguagem mais desejada, isto é, os programdores ou desejam aprende-la ou utiliza-la em seu ambiente de trabalho
+
+![image.png](attachment:image.png)
+
+Para saber mais a respeito desta pesquisa acesse o seguinte [link](https://insights.stackoverflow.com/survey/2019).
+
+Em resumo estas são as características que fazem a linguagem estar em grande destaque.
+* Linguagem de uso geral
+* Escalabilidade
+* Simplicidade dos códigos
+* Usabilidade
+* Velocidade de aplicação
+* Vasta comunidade diposta a ajudar
+* Incrível gama de bibliotecas
+* Multiparadigma
+
+## Instalação e configurações
+
+### Windows
+
+Acesse o site https://www.python.org/downloads/ e siga as instruções
+do próprio instalador.
+
+![python-windows.png](assets/imgages/python-windows.png)
+
+### Linux
+Em distribuições Linux o python geralmente já vem instalado na versão 2.7.  
+
+Abra o terminal (CTRL + ALT + T) e use o seguinte comando para checar a versão e se realmente foi instalado.
+
+~~~
+$ python --version
+~~~
+
+Estaremos usando a versão 3.x do Python nesta oficina, verifique se já se encontra instalado usando
+
+~~~
+$ python3 --version
+~~~
+
+Caso algum erro aconteça devemos instalar a versão mais recente do Python, para isto, ainda no terminal digite.
+
+~~~
+$ sudo apt-get update
+~~~
+
+Logo após isto, execute o seguinte comando.
+
+~~~
+$ sudo apt-get install python3
+~~~
+
+### Outras formas de instalação
+
+O Anaconda é uma plataforma que gerencia pacotes e IDEs, como Jupyter Notebook, Spyder e VS Code, sendo ideal para data science.
+
+Acesse o site https://www.anaconda.com/distribution/ e escolha o seu sistema operacional e a versão desejada do Python para instalação.
+![anaconda-site.png](assets/images/anaconda-site.png)
+
+## Variáveis
+
+### Tipos de Variáveis
+
+Como toda linguagem de programação, o Python possui uma série de tipos de variáveis. Aqui estudaremos as mais comuns e utilizaremos alguns métodos pertencentes a estes tipos.
+
+**String**  
+Strings são cadeias de caracteres usadas para representar palavras ou elementos textuais em um programa.
+
+
+```python
+saudacao = 'Olá'
+type(saudacao)
+```
+
+
+
+
+    str
+
+
+
+**Integer**  
+São variáveis que guardam números inteiros.
+
+
+```python
+numero_favorito = 7
+type(numero_favorito)
+```
+
+
+
+
+    int
+
+
+
+**Float**  
+São os pontos flutuantes ou números reais.
+
+
+```python
+altura = 1.70
+type(altura)
+```
+
+
+
+
+    float
+
+
+
+**Boolean**  
+Booleanos são variáveis que possuem os valores `True` ou `False`, são geralmente utilizadas para controle de fluxo.
+
+
+```python
+sabe_nadar = False
+type(sabe_nadar)
+```
+
+
+
+
+    bool
+
+
+
+### Strings
+
+Formatando a string
+
+
+```python
+meu_nome = 'dAnIel'
+print(meu_nome.title())
+print(meu_nome.lower())
+print(meu_nome.upper())
+```
+
+    Daniel
+    daniel
+    DANIEL
+    
+
+Removendo espaços em branco.
+
+
+```python
+meu_nome = '     \n\n dAnIel \t\t\n   '
+print(meu_nome)
+```
+
+         
+    
+     dAnIel 		
+       
+    
+
+O método `rstrip` remove os espaços em branco à direita da string.
+
+
+```python
+print(meu_nome.rstrip())
+```
+
+         
+    
+     dAnIel
+    
+
+Análogo ao método `rstrip` o método `lstrip` remove os espaços em braco à esquerda da string.
+
+
+```python
+print(meu_nome.lstrip())
+```
+
+    dAnIel 		
+       
+    
+
+`strip` remove espaços de amobos os lados.
+
+
+```python
+print(meu_nome.strip())
+```
+
+    dAnIel
+    
+
+Veja que `meu_nome` não foi modificado.
+
+
+```python
+print(meu_nome)
+```
+
+         
+    
+     dAnIel 		
+       
+    
+
+
+```python
+meu_nome = '      dAnIel    '
+print(meu_nome.strip().title())
+```
+
+    Daniel
+    
+
+#### Concatenando Strings
+
+
+```python
+pagodeiro_um = 'Péricles'
+pagodeiro_dois = 'Mumuzinho'
+pagodeiro_tres = 'Thiaguinho'
+
+mensagem = 'canta pagode.'
+
+print(pagodeiro_um + ' ' + mensagem)
+print(pagodeiro_dois + ' ' + mensagem)
+print(pagodeiro_tres + ' ' + mensagem)
+```
+
+    Péricles canta pagode.
+    Mumuzinho canta pagode.
+    Thiaguinho canta pagode.
+    
+
+
+```python
+print(pagodeiro_um + ' e ' + pagodeiro_tres + ' já foram do grupo Exaltasamba.')
+```
+
+    Péricles e Thiaguinho já foram do grupo Exaltasamba.
+    
+
+Python é uma liguagem dinamicamente tipada, no entanto ao tentar somar um número a uma string precisamos converter o tipo do número em uma string explicitamente!
+
+
+```python
+ano_atual = 2019
+print('O ano de ' + ano_atual + ' no calendário chinês equivale ao ano do porco.')
+```
+
+
+    ---------------------------------------------------------------------------
+
+    TypeError                                 Traceback (most recent call last)
+
+    <ipython-input-14-9017529bc686> in <module>
+          1 ano_atual = 2019
+    ----> 2 print('O ano de ' + ano_atual + ' no calendário chinês equivale ao ano do porco.')
+    
+
+    TypeError: can only concatenate str (not "int") to str
+
+
+
+```python
+print('O ano de ' + str(ano_atual) + ' no calendário chinês equivale ao ano do porco.')
+```
+
+    O ano de 2019 no calendário chinês equivale ao ano do porco.
+    
+
+#### Formatação
+
+Como vimos anteriormente, Python possui uma grande facilidade em lidar com strings e possui ferramentas poderosas de formatação. Vejamos os exemplos.
+
+A primeira notação a ser apresentada foi herdada da linguagem C. Basta colocar **"%"** seguido do tipo da variável, toda vez que desejarmos colocar o valor de uma variável em uma string. No final da string devemos colocar mais uma vez **"%"** e um array contendo o as variáveis em ordem que elas aparecem na string.
+
+Para os tipos de variáveis mais comuns.
+* **%s** para colocar strings;
+* **%i** para inteiros;
+* **%.xf** para flotas, onde x, é o número de casas decimais desejados para o float;
+
+
+```python
+print('%s e %s já foram do grupo Exaltasamba.' % (pagodeiro_um, pagodeiro_tres))
+```
+
+    Péricles e Thiaguinho já foram do grupo Exaltasamba.
+    
+
+
+```python
+nome = 'Daniel'
+idade = 22
+altura = 1.75984
+
+print('Olá, sou %s tenho %i anos e %f de altura.' % (nome, idade, altura))
+print('Olá, sou %s tenho %i anos e %.2f de altura.' % (nome, idade, altura))
+```
+
+    Olá, sou Daniel tenho 22 anos e 1.759840 de altura.
+    Olá, sou Daniel tenho 22 anos e 1.76 de altura.
+    
+
+Ao colocar a **"f"** no começo de uma string, estamos dizendo ao Python que esta string receberá informações de formatação. Para colocar os valores das variáveis na string basta colocar o nome de variável ou expressão dentre **"{}"**. Veja o exemplo!
+
+
+```python
+print(f'Olá, sou {nome} tenho {idade} anos e {round(altura, 2)} de altura.')
+```
+
+    Olá, sou Daniel tenho 22 anos e 1.76 de altura.
+    
+
+Podemos utilizar `'\n'` e `'\t'` para respectivamente quebrar linhas e gerar tabulações na formatação de nossa string.
+
+
+```python
+# Utilizando \n
+print('Este e texto está na primeira linha, \njá este se encontra na segunda linha.')
+```
+
+    Este e texto está na primeira linha, 
+    já este se encontra na segunda linha.
+    
+
+
+```python
+# Utilizando \n e \t
+print("linguages de programacao que estou aprendendo: \n\t- python \n\t- r \n\t- java \n\t- clojure \n\t- javascript")
+```
+
+    linguages de programacao que estou aprendendo: 
+    	- python 
+    	- r 
+    	- java 
+    	- clojure 
+    	- javascript
+    
+
+#### Utilizando outros operadores matemáticos em strings
+
+
+```python
+'NaN ' * 10 + ' batman!'.upper()
+```
+
+
+
+
+    'NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN  BATMAN!'
+
+
+
+#### Indices em strings
+
+
+```python
+fruta = 'abacaxi'
+
+print(fruta[0])
+print(fruta[1])
+print(fruta[2])
+print(fruta[3])
+```
+
+    a
+    b
+    a
+    c
+    
+
+#### Tamanho de strings
+Podemos verificar o tamanho de uma string utilizando a função `len`
+
+
+```python
+len(fruta)
+```
+
+
+
+
+    7
+
+
+
+
+```python
+print(fruta.title() + ' possui ' + str(len(fruta)) + ' letras.')
+```
+
+    Abacaxi possui 7 letras.
+    
+
+Essa liberdade e simplicidade com que o Python trata as strings é de grande ajuda para manipular dados deste tipo. Podendo gerar resultados interessantes como o seguinte:
+
+
+```python
+for numero_de_pontos in range(1, 25, 2):
+    print(' ' * int(50/2 - numero_de_pontos/2) + 
+          'o' * numero_de_pontos + 
+          ' ' * int(50/2 - numero_de_pontos/2))
+```
+
+                            o                        
+                           ooo                       
+                          ooooo                      
+                         ooooooo                     
+                        ooooooooo                    
+                       ooooooooooo                   
+                      ooooooooooooo                  
+                     ooooooooooooooo                 
+                    ooooooooooooooooo                
+                   ooooooooooooooooooo               
+                  ooooooooooooooooooooo              
+                 ooooooooooooooooooooooo             
+    
+
+Acho que neste caso não foi tão interessante assim...
+
+### Integers
+#### Operações matemáticas
+
+
+```python
+soma = 1 + 1
+print(soma)
+print(type(soma))
+```
+
+    2
+    <class 'int'>
+    
+
+
+```python
+subtracao = 1 - 1
+print(subtracao)
+print(type(subtracao))
+```
+
+    0
+    <class 'int'>
+    
+
+
+```python
+multiplicacao = 4 * 2
+print(multiplicacao)
+print(type(multiplicacao))
+```
+
+    8
+    <class 'int'>
+    
+
+
+```python
+potenciacao = 3 ** 2
+print(potenciacao)
+print(type(potenciacao))
+```
+
+    9
+    <class 'int'>
+    
+
+
+```python
+resto = 11 % 3
+print(resto)
+print(type(resto))
+```
+
+    2
+    <class 'int'>
+    
+
+
+```python
+divisao_com_resultado_inteiro = 20//3
+print(divisao_com_resultado_inteiro)
+```
+
+    6
+    
+
+### Floats
+#### Operações matemáticas
+
+
+```python
+soma_float = 1.0 + 2.0
+print(soma_float)
+print(type(soma_float))
+```
+
+    3.0
+    <class 'float'>
+    
+
+
+```python
+multiplicacao_float = 4.0 * 5.0
+print(multiplicacao_float)
+print(type(multiplicacao_float))
+```
+
+    20.0
+    <class 'float'>
+    
+
+
+```python
+divisao = 4 / 2 
+print(divisao)
+print(type(divisao))
+```
+
+    2.0
+    <class 'float'>
+    
+
+
+```python
+divisao = 4.0 / 7.00001
+print(divisao)
+print(type(divisao))
+```
+
+    0.571427755103207
+    <class 'float'>
+    
+
+
+```python
+resto_float = 5.0 % 5.0
+print(resto_float)
+print(type(resto_float))
+```
+
+    0.0
+    <class 'float'>
+    
+
+### Booleans
+
+
+```python
+True
+```
+
+
+
+
+    True
+
+
+
+
+```python
+False
+```
+
+
+
+
+    False
+
+
+
+Operadores de desigualdades
+
+
+```python
+3 < 2
+```
+
+
+
+
+    False
+
+
+
+
+```python
+10 > 3
+```
+
+
+
+
+    True
+
+
+
+
+```python
+1 < 2 < 3
+```
+
+
+
+
+    True
+
+
+
+
+```python
+10 > 2 > 1 > -30
+```
+
+
+
+
+    True
+
+
+
+Operador de diferenca
+
+
+```python
+'Terra'!='terra'
+```
+
+
+
+
+    True
+
+
+
+Operador de igualdade
+
+
+```python
+'Terra'=='terra'
+```
+
+
+
+
+    False
+
+
+
+O operador `and` ou `&` checa se ambas condições são satisfeitas e retorna `True` caso isto aconteça e `False` caso contrário.
+
+
+```python
+13 > 10 and 13 > 20
+```
+
+
+
+
+    False
+
+
+
+
+```python
+13 > 10 & 13 > 20
+```
+
+
+
+
+    False
+
+
+
+
+```python
+13 > 10 and 13 < 20
+```
+
+
+
+
+    True
+
+
+
+
+```python
+13 > 10 & 13 < 20
+```
+
+
+
+
+    True
+
+
+
+O operador `or` ou `|` checa se pelo menos uma das condições é satisfeita e retorna `True` caso isto realmente aconteça e `False` caso contrário.
+
+
+```python
+a = True
+b = False
+
+print(a or b)
+print(a | b)
+```
+
+    True
+    True
+    
+
+
+```python
+a = False
+b = False
+
+print(a or b)
+print(a | b)
+```
+
+    False
+    False
+    
+
+O operador `not` retorna a negação do booleano.
+
+
+```python
+not True
+```
+
+
+
+
+    False
+
+
+
+
+```python
+not False
+```
+
+
+
+
+    True
+
+
+
+
+```python
+not 7 > 10
+```
+
+
+
+
+    True
+
+
+
+
+```python
+not 7 < 10
+```
+
+
+
+
+    False
+
+
+
+O operador `in` verifica se um elemento esta contindo em um outro conjunto. Também pode ser utilizado em listas, um tipo de objeto que veremos posteriormente!
+
+
+```python
+chuva = 'chuva'
+guarda_chuva = 'guarda chuva'
+
+chuva in guarda_chuva
+```
+
+
+
+
+    True
+
+
+
+## Input de usuário
+O que seria dos nossos programas se não pudessem interagir com o mundo lá fora, a função `input()` trava o terminal e aguarda por uma entrada do usuário para continuar sua execução.
+
+
+```python
+nome_do_usuario = input('Digite seu nome: \n\t')
+
+print('Olá, ' + nome_do_usuario + '.')
+```
+
+    Digite seu nome: 
+    	Daniel
+    Olá, Daniel.
+    
+
+É importante dizer que mesmo a entrada sendo um número, a função `input` a retornará como uma string.
+
+
+```python
+idade_do_usuario= input('Digite sua idade: \n\t')
+
+print(nome_do_usuario + ' tem ' + idade_do_usuario + ' anos.')
+print(type(idade_do_usuario))
+```
+
+    Digite sua idade: 
+    	22
+    Daniel tem 22 anos.
+    <class 'str'>
+    
+
+## Listas e Tupla
+Listas e tuplas são objetos que guardam qualquer coleção de objetos de forma ordenada. Podemos inclusive ter listas dentro de listas, listas de strings e números, listas com dicionários, etc. São elementos muito importantes para guardar dados.
+
+###  Listas
+
+#### Criação de Listas
+
+
+```python
+sistema_solar = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno']
+print(sistema_solar)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno']
+    
+
+
+```python
+type(sistema_solar)
+```
+
+
+
+
+    list
+
+
+
+#### Índices
+
+
+```python
+primeiro_planeta = sistema_solar[0]
+terceiro_planeta = sistema_solar[2]
+print('O primeiro planeta do Sistema Solar é:\n\t- ' + primeiro_planeta + '\n')
+print('O terceiro planeta do Sistema Solar é:\n\t- ' + terceiro_planeta)
+```
+
+    O primeiro planeta do Sistema Solar é:
+    	- Mercúrio
+    
+    O terceiro planeta do Sistema Solar é:
+    	- Terra
+    
+
+Usando intervalos de indices
+
+
+```python
+sistema_solar[3:6]
+```
+
+
+
+
+    ['Marte', 'Júpiter', 'Saturno']
+
+
+
+Intervalos no Python, são sempre fechados à esquerda e abertos à direita. Da seguinte forma:  
+$$K = [1, 2, 3, 4)$$
+$$ 1 \in K $$
+$$ 2 \in K $$
+$$ 3 \in K $$
+$$ 4 \notin K $$
+
+
+
+```python
+sistema_solar[0:1]
+```
+
+
+
+
+    ['Mercúrio']
+
+
+
+Equivale a sistema_solar[:1]
+
+
+```python
+sistema_solar[:1]
+```
+
+
+
+
+    ['Mercúrio']
+
+
+
+
+```python
+sistema_solar[:3]
+```
+
+
+
+
+    ['Mercúrio', 'Vênus', 'Terra']
+
+
+
+
+```python
+sistema_solar[3:]
+```
+
+
+
+
+    ['Marte', 'Júpiter', 'Saturno']
+
+
+
+Indices negativos retornam da última posição até a primeira, ou seja, sistemSolar[-1] retornará a última posição da lista
+
+
+```python
+sistema_solar[-1]
+```
+
+
+
+
+    'Saturno'
+
+
+
+
+```python
+sistema_solar[-2:]
+```
+
+
+
+
+    ['Júpiter', 'Saturno']
+
+
+
+
+```python
+sistema_solar[:-4]
+```
+
+
+
+
+    ['Mercúrio', 'Vênus']
+
+
+
+
+```python
+sistema_solar[3] = 'Sol'
+print(sistema_solar)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Sol', 'Júpiter', 'Saturno']
+    
+
+Veja que:
+
+
+```python
+print(sistema_solar[-2:])
+print(sistema_solar[4:])
+sistema_solar[-2:] == sistema_solar[4:]
+```
+
+    ['Júpiter', 'Saturno']
+    ['Júpiter', 'Saturno']
+    
+
+
+
+
+    True
+
+
+
+Também podemos criar listas vazias.
+
+
+```python
+lista_vazia = list()
+lista_vazia
+```
+
+
+
+
+    []
+
+
+
+
+```python
+lista_vazia_2 = []
+lista_vazia_2
+```
+
+
+
+
+    []
+
+
+
+####  Adicionando e Removendo elementos
+##### Append
+O método `append` adiciona à ultima posição da lista o objeto recebido como argumento.
+
+
+```python
+sistema_solar = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno']
+sistema_solar.append('Netuno')
+print(sistema_solar)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Netuno']
+    
+
+##### Insert
+O método `insert` adiciona a qualquer posição da lista, o objeto passado como argumento.
+
+
+```python
+sistema_solar.insert(6, 'Urano')
+print(sistema_solar)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+    
+
+##### Remove 
+O método `remove` retira uma única ocorrência do valor passado como arguemento.
+
+
+```python
+sistema_solar.remove('Saturno')
+print(sistema_solar)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Urano', 'Netuno']
+    
+
+##### Pop
+O método `pop` remove a última posição da lista e a retorna.
+
+
+```python
+sistema_solar.append('Plutão')
+print(sistema_solar)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Urano', 'Netuno', 'Plutão']
+    
+
+
+```python
+planeta_anao = sistema_solar.pop()
+print('Estamos retirando ' + planeta_anao + ' pois ele se trata de um planeta anão.')
+```
+
+    Estamos retirando Plutão pois ele se trata de um planeta anão.
+    
+
+
+```python
+print(sistema_solar)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Urano', 'Netuno']
+    
+
+Também podemos usar o método `pop` passando uma posição da lista como argumento, desta forma ele removerá o objeto daquela posição e o retornará.
+
+
+```python
+sistema_solar.pop(2)
+```
+
+
+
+
+    'Terra'
+
+
+
+#### Algumas funções úteis
+##### len
+Verifica o tamanho de uma lista.
+
+
+```python
+sistema_solar = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+qt_planetas = len(sistema_solar)
+print(f'O Sistema Solar possui {str(qt_planetas)} planetas.')
+```
+
+    O Sistema Solar possui 8 planetas.
+    
+
+#### Organizando listas
+##### Sort
+O método `sort` altera a lista deixando-a em ordem crescente se forem números e na ordem alfabética em caso de string.
+
+
+```python
+sistema_solar.sort()
+print(sistema_solar)
+```
+
+    ['Júpiter', 'Marte', 'Mercúrio', 'Netuno', 'Saturno', 'Terra', 'Urano', 'Vênus']
+    
+
+Podemos utilizar o argumetno `reverse = True` para alterar nossa lista para a ordem decrescente.
+
+
+```python
+sistema_solar.sort(reverse=True)
+print(sistema_solar)
+```
+
+    ['Vênus', 'Urano', 'Terra', 'Saturno', 'Netuno', 'Mercúrio', 'Marte', 'Júpiter']
+    
+
+##### Sorted
+A função `sorted()` recebe como argumento uma lista, a diferença desta função para o método sort é que a função sorted não altera nosso objeto, ao invés disto, ela retorna uma cópia ordenada de nossa lista.
+
+
+```python
+sistema_solar = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+sistema_solar_ordem_alfabetica = sorted(sistema_solar)
+print(sistema_solar)
+print(sistema_solar_ordem_alfabetica)
+
+sistema_solar = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+sistema_solar_ordem_alfabetica = sorted(sistema_solar, reverse=True)
+print(sistema_solar_ordem_alfabetica)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+    ['Júpiter', 'Marte', 'Mercúrio', 'Netuno', 'Saturno', 'Terra', 'Urano', 'Vênus']
+    ['Vênus', 'Urano', 'Terra', 'Saturno', 'Netuno', 'Mercúrio', 'Marte', 'Júpiter']
+    
+
+**Atenção: Ao ordenar strings letras maiúsculas são postas a frente de letras minúsculas.**
+
+
+```python
+sorted(["a","A"])
+```
+
+
+
+
+    ['A', 'a']
+
+
+
+
+```python
+sorted(["A","c","b","a","B","C"])
+```
+
+
+
+
+    ['A', 'B', 'C', 'a', 'b', 'c']
+
+
+
+##### Reverse
+O método `reverse` inverte a posição dos objetos em nossa lista.
+
+
+```python
+sistema_solar = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+
+sistema_solar.sort()
+print(sistema_solar)
+sistema_solar.reverse()
+print(sistema_solar)
+sistema_solar.reverse()
+print(sistema_solar)
+sistema_solar.reverse()
+print(sistema_solar)
+```
+
+    ['Júpiter', 'Marte', 'Mercúrio', 'Netuno', 'Saturno', 'Terra', 'Urano', 'Vênus']
+    ['Vênus', 'Urano', 'Terra', 'Saturno', 'Netuno', 'Mercúrio', 'Marte', 'Júpiter']
+    ['Júpiter', 'Marte', 'Mercúrio', 'Netuno', 'Saturno', 'Terra', 'Urano', 'Vênus']
+    ['Vênus', 'Urano', 'Terra', 'Saturno', 'Netuno', 'Mercúrio', 'Marte', 'Júpiter']
+    
+
+
+```python
+sistema_solar = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+sistema_solar.reverse()
+print(sistema_solar)
+```
+
+    ['Netuno', 'Urano', 'Saturno', 'Júpiter', 'Marte', 'Terra', 'Vênus', 'Mercúrio']
+    
+
+### Copiando listas
+Se temos uma lista alocada em uma variável, se atribuírmos esta variável a outra variável as duas variáveis terão o mesmo endereço de memória, ou seja, qualquer modificação feita em qualquer uma das listas terá o mesmo efeito na outra.  
+O mesmo endereço de memória aponta para as duas variáveis. Veja o exemplo:
+
+
+```python
+planetas = sistema_solar
+planetas.append('Kepler 22b')
+planetas.append('Upsilon Andromedae b')
+planetas.append('WASP-11b/HAT-P-10b')
+print(planetas)
+```
+
+    ['Netuno', 'Urano', 'Saturno', 'Júpiter', 'Marte', 'Terra', 'Vênus', 'Mercúrio', 'Kepler 22b', 'Upsilon Andromedae b', 'WASP-11b/HAT-P-10b']
+    
+
+
+```python
+planetas==sistema_solar
+```
+
+
+
+
+    True
+
+
+
+Observe que mesmo adicionando novos planetas a lista planetas, a lista sistemaSolar recebe as mesmas modificação.
+
+
+```python
+print(sistema_solar)
+```
+
+    ['Netuno', 'Urano', 'Saturno', 'Júpiter', 'Marte', 'Terra', 'Vênus', 'Mercúrio', 'Kepler 22b', 'Upsilon Andromedae b', 'WASP-11b/HAT-P-10b']
+    
+
+`is` verifica se duas variáveis possuem o mesmo endereço de memória.
+
+
+```python
+planetas is sistema_solar
+```
+
+
+
+
+    True
+
+
+
+Printando o endereço de memória.
+
+
+```python
+print(id(planetas))
+print(id(sistema_solar))
+```
+
+    139739987112960
+    139739987112960
+    
+
+Se não desejamos que as duas variáveis possuam o mesmo endereço de memória, precisamos atribuir a nova lista uma cópia da lista a ser atribuída.
+
+
+```python
+sistema_solar = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+planetas = sistema_solar[:]   # Cria uma cópia da lista sistemaSolar
+```
+
+
+```python
+sistema_solar == planetas
+```
+
+
+
+
+    True
+
+
+
+
+```python
+planetas.append('Kepler 22b')
+planetas.append('Upsilon Andromedae b')
+planetas.append('WASP-11b/HAT-P-10b')
+
+print(sistema_solar)
+print(planetas)
+```
+
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno']
+    ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno', 'Kepler 22b', 'Upsilon Andromedae b', 'WASP-11b/HAT-P-10b']
+    
+
+
+```python
+sistema_solar==planetas
+```
+
+
+
+
+    False
+
+
+
+
+```python
+sistema_solar is planetas
+```
+
+
+
+
+    False
+
+
+
+Verifique que agora as duas variáveis possuem endereços de memória diferentes
+
+
+```python
+print(id(planetas))
+print(id(sistema_solar))
+```
+
+    139739986954112
+    139739987732544
+    
+
+####  Listas numéricas
+
+A função `range` retorna um iterável, tipos de objetos capazes de receberem iterações sob eles, como por exemplo `for` loops, que serão vistos posteriormente. Neste caso, utilizaremos a função `range` apenas para preencher uma lista com números em sequência.   
+Não se esquecendo que `range(a,  b)` é um intervalo fechado em `a` e aberto em `b`.
+
+
+```python
+numeros = list(range(1,11))
+numeros
+```
+
+
+
+
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+
+
+```python
+numeros_impares = list(range(1, 11, 2))
+numeros_impares
+```
+
+
+
+
+    [1, 3, 5, 7, 9]
+
+
+
+#####  Estatísticas básicas com listas numericas
+
+
+```python
+numeros = list(range(1,11))
+sum(numeros)
+```
+
+
+
+
+    55
+
+
+
+
+```python
+min(numeros)
+```
+
+
+
+
+    1
+
+
+
+
+```python
+max(numeros)
+```
+
+
+
+
+    10
+
+
+
+#### O que mais listas podem conter?
+
+
+```python
+colecao = [1, 2, 3, [4, 5, 6, ['strings', 'strings']], {"chave": "valor"}]
+colecao
+```
+
+
+
+
+    [1, 2, 3, [4, 5, 6, ['strings', 'strings']], {'chave': 'valor'}]
+
+
+
+###  Tuplas
+Tuplas são objetos parecidos com listas, sua principal diferença é que tuplas são imutáveis. Não podemos modificar os valores de uma tupla depois de criada.
+
+
+```python
+dimensoes = (10, 43)
+dimensoes
+```
+
+
+
+
+    (10, 43)
+
+
+
+
+```python
+dimensoes[0]
+```
+
+
+
+
+    10
+
+
+
+Tentando mudar o valor da primeira posição da tupla para.
+
+
+```python
+dimensoes[0] = 20
+```
+
+
+    ---------------------------------------------------------------------------
+
+    TypeError                                 Traceback (most recent call last)
+
+    <ipython-input-107-8d26a12a0b4f> in <module>
+    ----> 1 dimensoes[0] = 20
+    
+
+    TypeError: 'tuple' object does not support item assignment
+
+
+Verificamos que a tentativa de atribuir um valor diferente a uma posição da tupla falhou, para mudar o valor de uma tupla devemos criar uma outra tupla com as alterações desejadas.
+
+
+```python
+dimensoes = (20, 50)
+dimensoes
+```
+
+
+
+
+    (20, 50)
+
+
+
+## Dicionários
+Dicionários são objetos muito utilizados para guardar informações, sua estrutura é da forma **chave-valor**. Cada chave pode conter diferentes tipos de valores,ou seja, enquanto uma chave guarda valores númericos outra chave pode quardar listas, strings ou até mesmo outros dicionários.   
+Dicionários não guardam posição, veremos como criar dicionários que guardam a posição de suas chaves posteriormente.
+
+### Criando dicionários
+
+
+```python
+linguas_paises = {
+    'japao': 'japones',
+    'eua': 'ingles',
+    'brasil': 'portugues',
+    'portugal': 'portugues',
+    'china': ['mandarin', 'cantones'],
+    'canada': ['frances', 'ingles']
+}
+
+print(linguas_paises)
+```
+
+    {'japao': 'japones', 'eua': 'ingles', 'brasil': 'portugues', 'portugal': 'portugues', 'china': ['mandarin', 'cantones'], 'canada': ['frances', 'ingles']}
+    
+
+
+```python
+print(linguas_paises['japao'])
+print(linguas_paises['canada'])
+print(linguas_paises['brasil'])
+print(linguas_paises['china'][1])
+```
+
+    japones
+    ['frances', 'ingles']
+    portugues
+    cantones
+    
+
+
+```python
+brasil = {
+    "populacao": 0,
+    "areaTerritorial": "8.516.000 km2",
+    "continente": "america do sul"
+}
+```
+
+
+```python
+print(brasil['areaTerritorial'])
+print(brasil['continente'].title())
+```
+
+    8.516.000 km2
+    America Do Sul
+    
+
+Podemos alterar o valor de uma chave da seguinte forma
+
+
+```python
+print(brasil['populacao'])
+brasil['populacao'] = '209.3 milhões'
+print(brasil['populacao'])
+```
+
+    0
+    209.3 milhões
+    
+
+E ainda podemos adicionar outros conjutos de chave-valor ao nosso dicionário.
+
+
+```python
+brasil['lingua'] = 'portugues'
+print(brasil)
+```
+
+    {'populacao': '209.3 milhões', 'areaTerritorial': '8.516.000 km2', 'continente': 'america do sul', 'lingua': 'portugues'}
+    
+
+Inclusive podemos utilizar dicionários para claro, criar dicionários.
+
+
+```python
+dicionario_pt_jp = {
+    'bom_dia': {"romaji": "ohayou gozaimasu", "jp": "おはようございます"},
+    'carro': {"romaji": "kuruma", "jp": "車"},
+    'mulher':{"romaji": "onna no hito", "jp": "女の人"},
+    'homem':{"romaji": "otoko no hito", "jp": "男の人"},
+    'crianca': {"romaji": "kodomo", "jp": "子供"}
+}
+```
+
+
+```python
+print(str(dicionario_pt_jp) + '\n')
+print(str(dicionario_pt_jp['bom_dia']) + '\n') 
+print(str(dicionario_pt_jp['crianca']['jp']) + '\n')
+print(dicionario_pt_jp['mulher']['romaji'])
+```
+
+    {'bom_dia': {'romaji': 'ohayou gozaimasu', 'jp': 'おはようございます'}, 'carro': {'romaji': 'kuruma', 'jp': '車'}, 'mulher': {'romaji': 'onna no hito', 'jp': '女の人'}, 'homem': {'romaji': 'otoko no hito', 'jp': '男の人'}, 'crianca': {'romaji': 'kodomo', 'jp': '子供'}}
+    
+    {'romaji': 'ohayou gozaimasu', 'jp': 'おはようございます'}
+    
+    子供
+    
+    onna no hito
+    
+
+# Referências
+MATTHES, Eric. **Python Crash Course: A Hands-On, Project-Based Introduction to Programming**. San Francisco: No Starch Press, 2016.  
+LUTZ, Mark. **Learning Python**. Estados Unidos: O'Reilly Media, 2013.
