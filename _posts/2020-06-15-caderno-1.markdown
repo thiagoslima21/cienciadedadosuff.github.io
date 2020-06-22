@@ -25,13 +25,13 @@ Veja os resultados da pesquisa referente a 2019 abaixo:
 
 Python aparece em segundo lugar entre as linguagens mais amadas deste ano, perdendo apenas para Rust.
 
-![image.png](attachment:image.png)
+![image.png]({{ site.url }}/assets/python/courses/machine_learning/01/images/ranking_loved.png)
 
 #### A mais desejada
 
 Python aparece como a linguagem mais desejada, isto é, os programdores ou desejam aprende-la ou utiliza-la em seu ambiente de trabalho
 
-![image.png](attachment:image.png)
+![image.png]({{ site.url }}/assets/python/courses/machine_learning/01/images/ranking_desired.png)
 
 Para saber mais a respeito desta pesquisa acesse o seguinte [link](https://insights.stackoverflow.com/survey/2019).
 
@@ -52,7 +52,7 @@ Em resumo estas são as características que fazem a linguagem estar em grande d
 Acesse o site https://www.python.org/downloads/ e siga as instruções
 do próprio instalador.
 
-![python-windows.png](assets/imgages/python-windows.png)
+![python-windows.png]({{ site.url }}/assets/python/courses/machine_learning/01/images/python-windows.png)
 
 ### Linux
 Em distribuições Linux o python geralmente já vem instalado na versão 2.7.  
@@ -86,7 +86,7 @@ $ sudo apt-get install python3
 O Anaconda é uma plataforma que gerencia pacotes e IDEs, como Jupyter Notebook, Spyder e VS Code, sendo ideal para data science.
 
 Acesse o site https://www.anaconda.com/distribution/ e escolha o seu sistema operacional e a versão desejada do Python para instalação.
-![anaconda-site.png](assets/images/anaconda-site.png)
+![anaconda-site.png]({{ site.url }}/assets/python/courses/machine_learning/01/images/anaconda-site.png)
 
 ## Variáveis
 
