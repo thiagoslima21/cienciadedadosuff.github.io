@@ -1,0 +1,1056 @@
+---
+layout: post
+title:  "Utilizando o Python"
+date:   2020-08-02 23:07:41
+categories: python
+---
+
+# Python básico - Caderno 02
+## Sintaxes, classes e importação de bibliotecas
+
+* Controle de Fluxo
+* For e While loops
+* Funções
+* Classes
+* Instalação e importação de bibliotecas
+* Estatísticas básicas
+
+## Controle de fluxo
+Nem sempre nosso código deve se comportar de maneira igual para todas as situações, as vezes precisamos controlar o fluxo de nossas operações em situações específicas e para isso podemos utilizar `if` e uma condição.  
+No caso da condição de `if` for satisfeita as proximas linhas identadas abaixo dele serão executadas, caso contrário não.
+    
+### Testando uma condição única.
+
+
+```python
+if 10 < 30:
+    print('10 é menor que 30')
+```
+
+    10 é menor que 30
+    
+
+
+```python
+if 10 > 30:
+    print('10 é menor que 30')
+```
+
+
+```python
+verdade = True
+if verdade:
+    print('Verdade')
+```
+
+    Verdade
+    
+
+
+```python
+verdade = True
+
+if not verdade:
+    print('Verdade')
+```
+
+
+```python
+if (7 < 3) | (5 > 1):
+    print('Pelo menos um é verdade')
+```
+
+    Pelo menos um é verdade
+    
+
+Podemos verificar se um valor esta em uma lista utilizando `in`.
+
+
+```python
+generos_musicais_brasileiros = ['pagode', 'bossa nova', 'mpb', 'samba', 'axe']
+genero_musical = 'heavy metal'
+
+if genero_musical in generos_musicais_brasileiros:
+    print(f'{genero_musical.title()} é um genero musical brasileiro.')
+    
+else:
+    print(f'{genero_musical.title()} não é um genero musical nacional.')
+```
+
+    Heavy Metal não é um genero musical nacional.
+    
+
+
+```python
+generos_musicais_brasileiros = ['pagode', 'bossa nova', 'mpb', 'samba', 'axe']
+genero_musical = 'axe'
+
+if genero_musical in generos_musicais_brasileiros:
+    print(f'{genero_musical.title()} é um genero musical brasileiro.')
+    
+else:
+    print(f'{genero_musical.title()} não é um genero musical nacional.')
+```
+
+    Axe é um genero musical brasileiro.
+    
+
+Podemos verificar se um valor não esta em uma lista utilizando `not in`.
+
+
+```python
+filmes_de_heroi = ['liga da justica',
+                'homem-aranha: no aranhaverso', 
+                'incrivel hulk', 
+                'vingadores: ultimato', 
+                'vingadores: guerra infinita']
+
+filme = 'dumbo'
+
+if filme not in filmes_de_heroi:
+    print(f'{filme.title()} não é um filme de heroi.')
+    
+else:
+    print(f'{filme.title()} é um filme de heroi.')
+```
+
+    Dumbo não é um filme de heroi.
+    
+
+### Testando várias condições
+#### elif (else if)
+Quando precisamos testar mais de 2 situações podemos utilizar `elif` para lidar com essas condições.  
+Caso a condição anterior não seja satisfeita, a condição dada por `elif` será testada.
+
+
+```python
+idade = int(input('Qual a sua idade?\n\t- '))
+
+if idade < 4:
+    print('Você entra de graça!')
+
+elif (idade <= 21) | (idade >= 65):
+    print('Você paga meia entrada!')
+    
+else:
+    print('Você paga completa!')
+```
+
+    Qual a sua idade?
+    	- 22
+    Você paga completa!
+    
+
+
+```python
+idade = int(input('Qual a sua idade?\n\t- '))
+
+if idade < 4:
+    print('Você entra de graça!')
+
+elif idade <= 21:
+    print('Você paga meia entrada!')
+    
+elif idade < 65:
+    print('Você paga completa!')
+    
+else:
+    print('Você paga meia entrada!')
+```
+
+    Qual a sua idade?
+    	- 60
+    Você paga completa!
+    
+
+## For e While loops
+Eventualmente precisaremos percorer um conjunto de dados ou ainda realizar algumas ações repetidamente de acordo com uma condição, nestes casos utilizaremos loops.
+
+### For
+O loop `for` é sempre finito e poderá percorrer listas, tuplas e dicionários.
+
+
+```python
+for numero in range(0,10):
+    print(numero)
+```
+
+    0
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    
+
+
+```python
+for letra in 'abcdefghij':
+    print(letra)
+```
+
+    a
+    b
+    c
+    d
+    e
+    f
+    g
+    h
+    i
+    j
+    
+
+#### Listas
+
+
+```python
+meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun']
+
+for mes in meses:
+    print(mes)
+```
+
+    jan
+    fev
+    mar
+    abr
+    mai
+    jun
+    
+
+
+```python
+idades = [3, 5, 60, 22, 41, 21, 64, 30]
+
+for idade in idades:
+    if idade < 4:
+        print('Você tem %i anos logo, entra de graça!' % idade)
+
+    elif idade <= 21:
+        print('Você tem %i anos logo, paga meia entrada!' % idade)
+    
+    elif idade < 65:
+        print('Você tem %i anos logo, paga completa!' % idade)
+    
+    else:
+        print('Você paga tem %i anos logo, paga meia entrada!' % idade)
+```
+
+    Você tem 3 anos logo, entra de graça!
+    Você tem 5 anos logo, paga meia entrada!
+    Você tem 60 anos logo, paga completa!
+    Você tem 22 anos logo, paga completa!
+    Você tem 41 anos logo, paga completa!
+    Você tem 21 anos logo, paga meia entrada!
+    Você tem 64 anos logo, paga completa!
+    Você tem 30 anos logo, paga completa!
+    
+
+#### Dicionários
+
+
+```python
+linguagens_favoritas = {
+    'daniel': 'python',
+    'luiz': 'r',
+    'lyncoln': 'python',
+    'joao':  'clojure',
+    'maria': 'js',
+    'ana': 'java',
+    'marcos': 'go',
+    'julia': 'julia'
+}
+```
+
+O método `values` nos retorna os valores do dicionário, se desejamos iterar sob os valores das chaves basta utilizar este método.
+
+
+```python
+print('As linguagens favoritas foram:')
+for linguagens_favorita in linguagens_favoritas.values():
+    print('\t- ' + linguagens_favorita.title())
+```
+
+    As linguagens favoritas foram:
+    	- Python
+    	- R
+    	- Python
+    	- Clojure
+    	- Js
+    	- Java
+    	- Go
+    	- Julia
+    
+
+O método `keys` nos retorna as chaves do dicionário, se desejamos iterar sob chaves basta utilizar este método.
+
+
+```python
+print('As pessoas que participaram da pesquisa foram:')
+for pessoa in linguagens_favoritas.keys():
+    print('\t- ' + pessoa.title())
+```
+
+    As pessoas que participaram da pesquisa foram:
+    	- Daniel
+    	- Luiz
+    	- Lyncoln
+    	- Joao
+    	- Maria
+    	- Ana
+    	- Marcos
+    	- Julia
+    
+
+
+```python
+for pessoa in linguagens_favoritas.keys():
+    print(f'A linguagem de programação favorita de {pessoa.title()} é {linguagens_favoritas[pessoa].title()}.')
+```
+
+    A linguagem de programação favorita de Daniel é Python.
+    A linguagem de programação favorita de Luiz é R.
+    A linguagem de programação favorita de Lyncoln é Python.
+    A linguagem de programação favorita de Joao é Clojure.
+    A linguagem de programação favorita de Maria é Js.
+    A linguagem de programação favorita de Ana é Java.
+    A linguagem de programação favorita de Marcos é Go.
+    A linguagem de programação favorita de Julia é Julia.
+    
+
+Um pouco difente dos demais, o método `items` nos retorna as chaves e valores do dicionário. Por isso devemos passar duas variáveis para receber ambos dentro do escopo do `for`. Sempre na ordem **chave - valor**.
+
+
+```python
+for pessoa, linguagens_favoritas in linguagens_favoritas.items():
+    print(f'A linguagem de programação favorita de {pessoa.title()} é {linguagens_favoritas.title()}.')
+```
+
+    A linguagem de programação favorita de Daniel é Python.
+    A linguagem de programação favorita de Luiz é R.
+    A linguagem de programação favorita de Lyncoln é Python.
+    A linguagem de programação favorita de Joao é Clojure.
+    A linguagem de programação favorita de Maria é Js.
+    A linguagem de programação favorita de Ana é Java.
+    A linguagem de programação favorita de Marcos é Go.
+    A linguagem de programação favorita de Julia é Julia.
+    
+
+## While
+O loop `while` é realizado enquanto uma condição for satisfeita
+
+
+```python
+# Removendo todas as ocorrências de um valor em uma lista
+animais = ['cachorro', 'gato', 'rato', 'macaco', 'cachorro', 'cachorro', 'elefante', 'leao']
+
+while 'cachorro' in animais:
+    animais.remove('cachorro')
+    
+print(animais)
+
+# Verifique que o méotdo `remove` foi realizado um número de vezes tal que necessário para que todas as ocorrências de
+# 'cachorro' fossem retiradas da lista origial.
+```
+
+    ['gato', 'rato', 'macaco', 'elefante', 'leao']
+    
+
+Utilizando `break` para quebrar o ciclo
+
+
+```python
+# Saudando pessoas até que elas queiram sair do programa
+while True:
+    resposta = input('Digite seu nome para que eu possa te dar um oi!:\n' + 
+                    '(Entre com "quit" para sair da aplicacao)\n\n')
+    
+    if resposta.lower() == 'quit':
+        break
+    
+    # SE CAIR NA CONDIÇÃO DO `BREAK` AS LINHAS ABAIXO DESTE COMENTÁRIO NÃO SERÃO EXECUTADAS!!!
+    print('Olá, ' + resposta)
+```
+
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    Luiz
+    Olá, Luiz
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    Lyncoln
+    Olá, Lyncoln
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    Fernanda
+    Olá, Fernanda
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    Daniel
+    Olá, Daniel
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    quit
+    
+
+Utilizando *flags* para quebrar ciclos.
+*Flags* são variáveis `booleanas` que controlam o fluxo.
+
+
+```python
+continuar_execucao = True
+
+while continuar_execucao:
+    resposta = input('Digite seu nome para que eu possa te dar um oi!:\n' + 
+                     '(Entre com "quit" para sair da aplicacao)\n\n')
+        
+    if resposta.lower() != 'quit':
+        print('Olá, ' + resposta)
+        
+    else:
+        continuar_execucao = False
+```
+
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    Amanda
+    Olá, Amanda
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    Carolina
+    Olá, Carolina
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    André
+    Olá, André
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    quit
+    
+
+Utilizando `continue` para reiniciar o ciclo.
+
+
+```python
+while True:
+    resposta = input('Digite seu nome para que eu possa te dar um oi!:\n' + 
+                    '(Entre com "quit" para sair da aplicacao)\n\n')
+    
+    if resposta == '':
+        print('Digite um nome válido!')
+        continue
+    # SE O USUÁRIO APENAS PRECIONAR ENTER SEM ADICIONAR SEU NOME O CICLO REINICIARÁ E PEDIRA NOVAMENTE PARA QUE
+    # DIGITE SEU NOME.
+    
+    if resposta.lower() == 'quit':
+        break
+    
+    # SE CAIR NA CONDIÇÃO DO `BREAK` AS LINHAS ABAIXO DESTE COMENTÁRIO NÃO SERÃO EXECUTADAS!!!
+    print('Olá, ' + resposta)
+```
+
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    William
+    Olá, William
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    Ricardo
+    Olá, Ricardo
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    Alice
+    Olá, Alice
+    Digite seu nome para que eu possa te dar um oi!:
+    (Entre com "quit" para sair da aplicacao)
+    
+    quit
+    
+
+Utilizando `while` em listas
+
+
+```python
+super_herois = ['batman', 'mulher maravilha', 'homem aranha', 'hulk', 'homem de ferro']
+
+while super_herois:
+    super_herois_atual = super_herois.pop()
+    print(super_herois_atual.title())
+    
+print(super_herois)
+```
+
+    Homem De Ferro
+    Hulk
+    Homem Aranha
+    Mulher Maravilha
+    Batman
+    []
+    
+
+## Funções
+def define o escopo de uma função, precisamos dar um nome para essa função e em seguida entre os () passar quais são os argumentos esperados que serão passados pelo o usuário"    
+
+
+
+
+```python
+def ola_mundo():
+    print('Olá, Mundo!')
+    
+ola_mundo()
+```
+
+    Olá, Mundo!
+    
+
+
+```python
+def sauda_usuario(usuario):
+    print('Olá, ' + usuario.title() + '.')
+
+sauda_usuario('raquel')
+```
+
+    Olá, Raquel.
+    
+
+
+```python
+def formata_nomes(nomes):
+    lista_formatada = []
+    for nome in nomes:
+        lista_formatada.append(nome.title())
+        
+    return lista_formatada
+
+lista_nao_formatada = ['dAnIeL', 'iGoR', 'caRoLINA']
+
+lista_nao_formatada = formata_nomes(lista_nao_formatada)
+lista_nao_formatada
+```
+
+
+
+
+    ['Daniel', 'Igor', 'Carolina']
+
+
+
+
+```python
+def soma(a, b):
+    return a + b
+
+soma(3, 4)
+```
+
+
+
+
+    7
+
+
+
+## Classes
+Classes são a grande razão pela qual python é uma linguagem orientada a objetos. Linguagens orientadas a objetos foram idealizadas com o intuito de modelar a realidade em torno daquele objeto. A seguir, veremos como criar e definir métodos e valores para nossas classes.
+
+
+```python
+class Cachorro:
+    def __init__(self, nome, idade, raca, sexo): # Contrutor
+        self.nome = nome   # Valor nome
+        self.idade = idade # Valor idade
+        self.raca = raca   # Valor raca
+        self.sexo = sexo   # Valor sexo
+        
+    def sentar(self):      # Método `sentar`
+        print(self.nome.title() + ' sentou.')
+        
+    def latir(self):       # Método `latir`
+        print('Au! Au!')
+        
+    def rolar(self):       # Método `rolar`
+        print(self.nome.title() + ' rolou.')
+        
+    def info(self):        # Método `info`
+        print('Este é %s um(a) %s da raca %s com %i anos!' % (self.nome.title(), 
+                                                              self.sexo, 
+                                                              self.raca , 
+                                                              self.idade))
+```
+
+O método `__init__` é um método especial, ele pode ser chamado de construtor. Ele receberá como argumentos as variáveis que julgamos necessárias para definir nosso objeto.
+Já o parâmetro `self` é usado para informar de que aquela referência é do próprio objeto.
+
+
+```python
+cachorrinho_um = Cachorro('beck', 4, 'vira-lata', 'macho') # Aqui estamos instanciando nossoa classe em uma variável.
+print(cachorrinho_um.nome)
+print(cachorrinho_um.idade)
+print(cachorrinho_um.raca)
+print(cachorrinho_um.sexo)
+```
+
+    beck
+    4
+    vira-lata
+    macho
+    
+
+
+```python
+cachorrinho_um.sentar()
+cachorrinho_um.latir()
+cachorrinho_um.info()
+```
+
+    Beck sentou.
+    Au! Au!
+    Este é Beck um(a) macho da raca vira-lata com 4 anos!
+    
+
+Agora veremos um exemplo um pouco mais robusto, estaremos modelando um carro que possui modelo, marca, cor e a quantidade de combustível gasto por km rodado.
+
+
+```python
+class Carro:
+    def __init__(self, modelo, marca, cor, quilometros_por_combustivel):
+        self.modelo = modelo
+        self.marca = marca
+        self.cor = cor
+        self.quilometros_por_combustivel = quilometros_por_combustivel
+        self.km = 0
+        self.tanque = 0
+    
+    def encher_tanque(self):
+        self.tanque = 60
+        print('Pronto senhor(a), tanque cheio! Vai querer notinha?')
+        
+    def dirigir(self, km):
+        if km * self.quilometros_por_combustivel > self.tanque:
+            print('Você não tem combustível suficiente para viajar ' + str(km) +'Km.')
+        else:
+            self.km += km
+            self.tanque -= km * self.quilometros_por_combustivel
+            print('Você dirigiu por %iKm' % km)        
+```
+
+
+```python
+carro_um = Carro('WR STI', 'Subaru', 'Prata', 12)
+carro_um
+```
+
+
+
+
+    <__main__.Carro at 0x7f568466e310>
+
+
+
+
+```python
+print(carro_um.marca)
+print(carro_um.modelo)
+```
+
+    Subaru
+    WR STI
+    
+
+
+```python
+carro_um.dirigir(1)
+print(carro_um.tanque)
+carro_um.encher_tanque()
+print(carro_um.tanque)
+carro_um.dirigir(3)
+print(carro_um.tanque)
+print(carro_um.km)
+```
+
+    Você não tem combustível suficiente para viajar 1Km.
+    0
+    Pronto senhor(a), tanque cheio! Vai querer notinha?
+    60
+    Você dirigiu por 3Km
+    24
+    3
+    
+
+### Herança
+No exemplo anterior criamos a classe `Carro` que tenta simular a execução de um carro genérico. Entretanto, podemos pensar que existem outros tipos mais específicos de carros, como por exemplo os elétricos. Graças ao universo da orientação a objetos esse problema pode ser facilmente resolvido com o conceito de *Inheritance* ou herança. A classe filha `CarroEletetrico` irá herdar características da classe pai `Carro`.
+
+
+```python
+class CarroEletrico(Carro):
+    def __init__(self, modelo, marca, cor, quilometros_por_combustivel, bateria):
+        super().__init__(modelo, marca, cor, quilometros_por_combustivel)
+        self.bateria = bateria
+    
+    def encher_tanque(self): # COMO CARROS ELÉTRICOS NÃO ENCHEM TANQUE UTILIZAMOS UM "OVERRIDE" SOBRESCREVEMOS UM MÉTODO
+                             # PARA QUE ELE ATENDA NOSSAS NECESSEDIDADES NA CLASSE FILHA
+        print('Carros eletricos nao enchem tanque...')
+```
+
+
+```python
+carro_dois = CarroEletrico('model s', 'tesla', 'preto', 12, '75 kWh')
+carro_dois
+```
+
+
+
+
+    <__main__.CarroEletrico at 0x7f5684670c70>
+
+
+
+
+```python
+carro_dois.encher_tanque()
+```
+
+    Carros eletricos nao enchem tanque...
+    
+
+
+```python
+carro_dois.bateria
+```
+
+
+
+
+    '75 kWh'
+
+
+
+# Instalação de bibliotecas
+
+## No windows e linux
+
+### Pelo cmd
+### Instalação e bibliotecas externas
+
+O `píp` é um repositório que guarda uma quantidade enorme de pacotes e módulos para utilizarmos em nossas aplicações.
+Se o Python estiver adicionado ao PATH digite no terminal do windows:  
+~~~
+$ pip --version
+~~~
+
+Caso seu pip esteja desatualizado utilize:
+
+~~~
+$ python -m pip install --upgrade pip
+~~~
+
+Para instalar algum pacote execute:
+
+~~~
+$ pip install "nome do pacote"
+~~~
+
+ou ainda
+
+~~~
+$ python -m pip install "nome do pacote"
+~~~
+
+## Pelo Anaconda
+
+Ao iniciar o Anaconda nos deparamos com a seguinte tela:
+![tela_0]({{ site.url }}/assets/python/courses/machine_learning/02/images/anaconda_tut0.png)
+  
+No painel a esquerda selecione **Enviroments**
+![tela_1]({{ site.url }}/assets/python/courses/machine_learning/02/images/anaconda_tut1.png)
+  
+Você será levado a tela de ambientes, agora iremos procurar pelo módulo que queremos instalar.  
+Para isso, troque o filtra de **Installed** para **Not installed** e faça a busca no campo adequado.
+![tela_2]({{ site.url }}/assets/python/courses/machine_learning/02/images/anaconda_tut2.png)
+
+Neste exemplo estaremos installando o módulo **scrapy** que é uma ótima ferramenta para web scrapping no Python.
+![tela_3]({{ site.url }}/assets/python/courses/machine_learning/02/images/anaconda_tut3.png)
+![tela_4]({{ site.url }}/assets/python/courses/machine_learning/02/images/anaconda_tut4.png)
+![tela_5]({{ site.url }}/assets/python/courses/machine_learning/02/images/anaconda_tut5.png)
+![tela_6]({{ site.url }}/assets/python/courses/machine_learning/02/images/anaconda_tut6.png)
+
+Agora é só esperar o pacote terminar de ser baixado!
+
+# Importação
+
+Agora veremos as diferentes formas de importar módulos (os pacotes do python) para seu ambiente.
+
+
+```python
+import numpy                        # Importa o módulo numpy
+import pandas as pd                 # Importa o módulo pandas com um alias pd
+import matplotlib.pyplot as plt     # Importa a classe pyplot dentro do pacote matplotlib com o alias plt
+from os import getcwd               # Importa apenas a função getcwd do módulo os
+from time import asctime as data    # Importa a penas a função asctime com o alias data 
+from statistics import *            # Importa tudo que pertence ao módulo statistics
+```
+
+**Alias é o "apelido" que o módulo terá no código, ou seja, apenas precisamos chamar o alias para referenciar o módulo**
+
+**Vejamos agora como cada forma de importação é utilizada!**
+
+Veja que o numpy foi importado utilizando `import numpy` dessa forma devemos sempre colocar o nome do módulo antes de utilizar os métodos e atributos que ele possui
+
+
+```python
+numpy.random.seed(60)
+numpy.random.normal(0, 1, 10)       # Cria um array aleatório de tamanho 10 com distriuição normal mu = 0, sigma = 1.
+```
+
+
+
+
+    array([-9.21770993e-01, -5.86317634e-01,  1.16399914e+00, -1.24172396e+00,
+           -1.98523022e+00,  1.30670891e+00,  7.37807059e-01,  3.79111282e-01,
+            9.89200864e-04, -1.10503482e+00])
+
+
+
+Já em `from os import getcwd` apenas importamos a função `getcwd` do módulo os
+
+
+```python
+getcwd()                            # Retorna o diretório atual do workspace.
+```
+
+
+
+
+    '/home/daniel.dsantos/Documents/personal/git/python-basico/notebooks/01_python_basico'
+
+
+
+Utilizando o comando `from time import asctime as data` importamos a função asctime do módulo time e adicionamos um _alias_ data utilizando a _keyword_ `as`.
+
+
+```python
+data()                              # Retorna a data de hoje
+```
+
+
+
+
+    'Wed Nov 13 10:39:42 2019'
+
+
+
+Ao utilizar `from statistics import *` estamos importando todas as funções e métodos pertencentes ao módulo statistics.
+Não é aconselhável utilizar já que o código perde semântica.
+
+
+```python
+numpy.random.seed(35)
+numbers = numpy.random.randint(1, 20, 30)
+
+print(mean(numbers))
+print(harmonic_mean(numbers))
+print(median(numbers))
+```
+
+    9
+    4.522366591633217
+    10.5
+    
+
+## Estatística Básica
+
+
+```python
+import statistics as stats
+```
+
+
+```python
+numeros = [10, 22, 14, 12, 1, 2, 3, 5]
+```
+
+### Médias
+
+#### Simples
+
+
+```python
+stats.mean(numeros)
+```
+
+
+
+
+    8.625
+
+
+
+#### Harmonica
+
+
+```python
+stats.harmonic_mean(numeros)
+```
+
+
+
+
+    3.428253408774696
+
+
+
+### Mediana
+
+
+```python
+stats.median(numeros)
+```
+
+
+
+
+    7.5
+
+
+
+### Variancia
+
+
+```python
+stats.variance(numeros)
+```
+
+
+
+
+    52.55357142857143
+
+
+
+### Desvio Padrão
+
+
+```python
+stats.stdev(numeros)
+```
+
+
+
+
+    7.249384210301688
+
+
+
+### Números Aleatórios
+
+
+```python
+import numpy as np
+```
+
+#### Uniforme Discreta
+
+
+```python
+np.random.randint(0, 10, 5)
+```
+
+
+
+
+    array([5, 8, 3, 0, 4])
+
+
+
+#### Uniforme Contínua
+
+
+```python
+np.random.uniform(0, 1, 5)
+```
+
+
+
+
+    array([0.88161863, 0.17404628, 0.40295789, 0.83212654, 0.97866247])
+
+
+
+#### Normal
+
+
+```python
+np.random.normal(0, 1, 5)
+```
+
+
+
+
+    array([ 0.95554288,  0.30781478,  0.7328766 , -1.28670314, -1.03870027])
+
+
+
+#### Beta
+
+
+```python
+np.random.beta(1, 2, 5)
+```
+
+
+
+
+    array([0.49022502, 0.10759798, 0.10514682, 0.24521349, 0.40738156])
+
+
+
+#### Exponencial
+
+
+```python
+np.random.exponential(3, 5)
+```
+
+
+
+
+    array([0.38398559, 0.50496567, 4.35873831, 2.15541275, 1.85748264])
+
+
+
+#### Qui-quadrado
+
+
+```python
+np.random.chisquare(5, 5)
+```
+
+
+
+
+    array([1.80651409, 3.80611123, 2.07244875, 4.89485665, 0.45362128])
+
+
+
+### Referências
+MATTHES, Eric. **Python Crash Course: A Hands-On, Project-Based Introduction to Programming**. San Francisco: No Starch Press, 2016.  
+LUTZ, Mark. **Learning Python**. Estados Unidos: O'Reilly Media, 2013.

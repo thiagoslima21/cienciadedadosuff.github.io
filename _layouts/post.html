@@ -1,45 +1,44 @@
----
-layout: default
----
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/highlight/styles/default.css" | relative_url }}"> 
+      <script src="{{ "/assets/highlight/highlight.pack.js" | relative_url }}"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    {% include navbar.html %} 
+    <div class="jumbotron text-white rounded bg-dark">
+      <div class="col-md-0 px-0">
+        <h1 class="display-3 font-bold text-center">{{ page.title }}</h1>
+        <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
+        <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p> -->
+      </div>
+    </div>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8 blog-main text-left">
+            {{ content }}
+        </div>
+        <aside class="col-md-4 blog-sidebar">
+          <div class="p-3 sticky-top float-right">
+            <h4 class="font-italic">Navegação</h4>
+            <ol class="list-unstyled mb-0">
+              {% assign h2_open_start = content | split: '<h2' %}
 
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-  <div class="w3-sidebar w3-bar-block" style="width:25%">
-    <a href="#variáveis" class="w3-bar-item w3-button">Variáveis</a>
-    <br>
-    <a href="#input-de-usuário" class="w3-bar-item w3-button">Input de usuário</a>
-  </div>
-  
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.modified_date -%}
-        ~ 
-        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
-        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-          {{ mdate | date: date_format }}
-        </time>
-      {%- endif -%}
-      {%- if page.author -%}
-        • {% for author in page.author %}
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
-            {%- if forloop.last == false %}, {% endif -%}
-        {% endfor %}
-      {%- endif -%}</p>
-  </header>
-
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
-  </div>
-
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
-
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-</article>
+              {% for h2 in h2_open_start %}
+                {% assign topic = h2 | split: '</h2>' %}
+                {% assign topic = topic[0] | regex_replace: '.*>', '' | strip %}       
+                <li><a href="#{{ topic | downcase | regex_replace: '[.!?]', '' | regex_replace: ' ', '-' | url_encode}}">{{ topic }}</a></li>
+              {% endfor %}  
+            </ol>
+          </div>
+        </aside>
+      </div>
+    </main>
+    {% include footer.html %}
+  </body>
+</html>

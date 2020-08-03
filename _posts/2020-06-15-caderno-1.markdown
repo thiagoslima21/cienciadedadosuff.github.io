@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Caderno 1"
+title:  "Começando com o Python"
 date:   2020-06-15 10:30:41 -0300
-categories: Machine-Learning
+categories: python
 ---
 
 # Python básico - Caderno 01
-# Tipos e objetos
+## Tipos e objetos
 
 Este caderno busca conter a primeira parte sobre Python básico e inclui:
 * Por que Python?
@@ -1657,6 +1657,6 @@ print(dicionario_pt_jp['mulher']['romaji'])
     onna no hito
     
 
-# Referências
+### Referências
 MATTHES, Eric. **Python Crash Course: A Hands-On, Project-Based Introduction to Programming**. San Francisco: No Starch Press, 2016.  
 LUTZ, Mark. **Learning Python**. Estados Unidos: O'Reilly Media, 2013.

@@ -8,10 +8,11 @@ description:
 twitter_username: CienciaDeDadosUFF
 github_username:  CienciaDeDadosUFF
 
-permalink: /notebooks/:title:output_ext
+permalink: /cursos/notebooks/:categories/:title:output_ext
 
 sass:
   sass_dir: assets/css
   
 plugins:
   - jekyll-feed
+  - jekyll-regex-replace
