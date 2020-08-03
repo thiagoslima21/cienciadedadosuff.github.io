@@ -1,3 +1,5 @@
+github: [metadata]
+
 url: "https://cienciadedadosuff.github.io"
 
 title: Ciência de dados - UFF
@@ -16,3 +18,4 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-regex-replace
+  - jekyll-github-metadata
