@@ -56,6 +56,12 @@ pre {
     word-wrap: break-word;
 }
 
+.language-plaintext pre * {
+    background: white;
+    color: #666;
+    font-weight: normal;
+}
+
 main img {
     max-width: 600px;
     max-height: 600px;
